@@ -1,0 +1,55 @@
+---
+layout: default
+---
+
+<article class="card">
+  <header class="post-header">
+    <h1 class="post-title">{{ page.title }}</h1>
+    <div class="post-meta">
+      <span>📅 {{ page.date | date: "%B %d, %Y" }}</span>
+      {% if page.author %}
+      <span>✍️ {{ page.author }}</span>
+      {% endif %}
+      {% if page.read_time %}
+      <span>⏱️ {{ page.read_time }} min read</span>
+      {% endif %}
+      {% if page.tags %}
+      <span>🏷️ {{ page.tags | join: ", " }}</span>
+      {% endif %}
+    </div>
+  </header>
+
+  <div class="post-content">
+    {{ content }}
+  </div>
+
+  {% if page.tags %}
+  <div class="post-tags" style="margin-top: 48px; padding-top: 24px; border-top: 1px solid var(--border-color);">
+    <strong style="color: var(--text-medium); margin-right: 12px;">Tags:</strong>
+    {% for tag in page.tags %}
+      <span class="skill-tag">{{ tag }}</span>
+    {% endfor %}
+  </div>
+  {% endif %}
+</article>
+
+<!-- Navigation to other posts -->
+<div style="display: flex; justify-content: space-between; gap: 20px; margin: 32px 0;">
+  {% if page.previous.url %}
+  <a href="{{ page.previous.url }}" class="card" style="flex: 1; text-decoration: none; padding: 24px;">
+    <div style="color: var(--text-light); font-size: 0.9rem; margin-bottom: 8px;">← Previous Post</div>
+    <div style="color: var(--text-dark); font-weight: 600;">{{ page.previous.title }}</div>
+  </a>
+  {% else %}
+  <div style="flex: 1;"></div>
+  {% endif %}
+
+  {% if page.next.url %}
+  <a href="{{ page.next.url }}" class="card" style="flex: 1; text-decoration: none; padding: 24px; text-align: right;">
+    <div style="color: var(--text-light); font-size: 0.9rem; margin-bottom: 8px;">Next Post →</div>
+    <div style="color: var(--text-dark); font-weight: 600;">{{ page.next.title }}</div>
+  </a>
+  {% else %}
+  <div style="flex: 1;"></div>
+  {% endif %}
+</div>

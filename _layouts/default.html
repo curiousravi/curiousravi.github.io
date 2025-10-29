@@ -24,13 +24,19 @@
   <header class="site-header">
     <div class="wrap">
       <h1 class="site-title">
-        <a href="/">{{ site.title }}</a>
+        <a href="/">
+          <img src="/assets/images/favicon.png" alt="{{ site.title }} Logo" class="site-logo">
+          {{ site.title }}
+        </a>
       </h1>
       <nav class="top-nav">
         <a href="/">Home</a>
         <a href="/about">About</a>
         <a href="/#blog">Blog</a>
         <a href="/contact">Contact</a>
+        <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle dark mode">
+          <span id="theme-icon">🌙</span>
+        </button>
       </nav>
     </div>
   </header>
@@ -50,8 +56,28 @@
     </div>
   </footer>
 
-  <!-- Smooth scroll behavior -->
+  <!-- Dark Mode Script -->
   <script>
+    // Check for saved theme preference or default to light mode
+    const currentTheme = localStorage.getItem('theme') || 'light';
+    document.documentElement.setAttribute('data-theme', currentTheme);
+    updateThemeIcon(currentTheme);
+
+    function toggleTheme() {
+      const theme = document.documentElement.getAttribute('data-theme');
+      const newTheme = theme === 'light' ? 'dark' : 'light';
+      
+      document.documentElement.setAttribute('data-theme', newTheme);
+      localStorage.setItem('theme', newTheme);
+      updateThemeIcon(newTheme);
+    }
+
+    function updateThemeIcon(theme) {
+      const icon = document.getElementById('theme-icon');
+      icon.textContent = theme === 'light' ? '🌙' : '☀️';
+    }
+
+    // Smooth scroll behavior
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
       anchor.addEventListener('click', function (e) {
         e.preventDefault();
