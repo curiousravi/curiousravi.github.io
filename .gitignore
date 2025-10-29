@@ -1,0 +1,22 @@
+# macOS
+.DS_Store
+
+# Node / Build tools (if used later)
+node_modules/
+
+# Editor settings
+.vscode/
+.idea/
+
+# Logs  
+*.log
+*.info
+
+# Jekyll build output
+_site/
+.sass-cache/
+.jekyll-cache/
+# Bundler config
+.bundle/
+# Gemfile.lock
+Gemfile.lock

@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>{{ page.title | default: site.title }}</title>
+  <meta name="description" content="{{ page.description | default: site.description }}">
+  <link rel="stylesheet" href="/assets/css/style.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="wrap">
+      <h1 class="site-title"><a href="/">{{ site.title }}</a></h1>
+      <nav class="top-nav">
+        <a href="/about">About</a>
+        <a href="/contact">Contact</a>
+        <a href="/#blog">Blog</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="wrap">
+    {{ content }}
+  </main>
+
+  <footer class="site-footer wrap">
+    <p>© {{ site.title }} · <a href="https://www.linkedin.com">LinkedIn</a> · <a href="https://github.com">GitHub</a></p>
+  </footer>
+</body>
+</html>
